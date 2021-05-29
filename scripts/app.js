@@ -2,8 +2,8 @@
 const chatList = document.querySelector(".chat-list");
 const newChat = document.querySelector(".new-chat");
 const newName = document.querySelector(".new-name");
-const update = document.querySelector('.update-mssg');
-
+const update = document.querySelector(".update-mssg");
+const rooms = document.querySelector(".chat-rooms")
 const chatroom = new Chatroom("general", "Anonymous");
 const chatUI = new ChatUI(chatList);
 //getting chat
@@ -48,4 +48,10 @@ if (localStorage.getItem("username") !== null) {
     chatroom.updateName(localStorage.username);
 }
 
-console.log(chatroom);
+rooms.addEventListener('click',e=>{
+    if(e.target.tagName === "BUTTON"){
+        chatUI.clear()
+        chatroom.updateRoom(e.target.id);
+        chatroom.getChat(chat=>{chatUI.render(chat)});
+    };
+})

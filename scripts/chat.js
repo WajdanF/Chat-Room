@@ -35,7 +35,7 @@ class Chatroom {
 
     updateName(username){
         this.username = username;
-    }
+        }
     updateRoom(room){
         this.room=room;
         if(this.unsub){
