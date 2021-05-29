@@ -4,9 +4,9 @@ const newChat = document.querySelector(".new-chat");
 const newName = document.querySelector(".new-name");
 const update = document.querySelector('.update-mssg');
 
-const chatroom = new Chatroom("general", "zhenia");
+const chatroom = new Chatroom("general", "Anonymous");
 const chatUI = new ChatUI(chatList);
-//ggetting chat
+//getting chat
 
 chatroom.getChat((data) => {
     chatUI.render(data);
@@ -45,4 +45,7 @@ newName.addEventListener("submit", (e) => {
 if (localStorage.getItem("username") !== null) {
     newName.classList.add("d-none");
     update.innerHTML = `<span style="font-weight:bold">Current Username:</span> <span> ${localStorage.username}</span>`;
+    chatroom.updateName(localStorage.username);
 }
+
+console.log(chatroom);
