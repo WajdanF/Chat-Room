@@ -1,8 +1,10 @@
-const chatroom = new Chatroom('general','zhenia');
+//dom queries
+const chatList = document.querySelector(".chat-list");
 
-chatroom.addChat('hello');
+const chatroom = new Chatroom('general','zhenia');
+const chatUI = new ChatUI(chatList)
 //ggetting chat
 
 chatroom.getChat((data)=>{
-    console.log(data);
+    chatUI.render(data)
 })
